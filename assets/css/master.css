@@ -1,0 +1,130 @@
+@import url("https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap");
+#game {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: (1fr)[5];
+      grid-template-rows: repeat(5, 1fr);
+  -ms-grid-columns: (1fr)[5];
+      grid-template-columns: repeat(5, 1fr);
+  grid-gap: 2px;
+  -webkit-perspective: 1000px;
+          perspective: 1000px;
+  height: 100vh;
+  aspect-ratio: 1/1;
+}
+
+#game > div {
+  border: solid 1px #000;
+  position: relative;
+  -webkit-transition: -webkit-transform 0.6s;
+  transition: -webkit-transform 0.6s;
+  transition: transform 0.6s;
+  transition: transform 0.6s, -webkit-transform 0.6s;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+#game > div div, #game > div img {
+  position: absolute;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+#game > div img {
+  border: solid 1px #000;
+  pointer-events: none;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+}
+
+#game > div .flip-card-front {
+  -webkit-transform: rotateX(180deg);
+          transform: rotateX(180deg);
+  background-color: aqua;
+}
+
+#game > div .flip-card-back {
+  height: 100%;
+  width: 100%;
+  background-color: magenta;
+  cursor: pointer;
+}
+
+#game > div .flip-card-back:hover {
+  background-color: darkviolet;
+}
+
+#game > div.active {
+  -webkit-transform: rotateX(-180deg);
+          transform: rotateX(-180deg);
+}
+
+#timer {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: center;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.gameover {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(148, 0, 211, 0.5);
+}
+
+*,
+*::after,
+*::before {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-kerning: auto;
+          font-kerning: auto;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+
+html {
+  font-family: 'Luckiest Guy';
+}
+
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: url("../images/moroccan-flower-dark.png");
+  color: #fff;
+  margin: 0;
+}
+/*# sourceMappingURL=master.css.map */

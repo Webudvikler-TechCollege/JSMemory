@@ -1,0 +1,62 @@
+#game {
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 2px;
+
+  div {
+    background-color: #fff;
+    border: solid 1px #000;
+    cursor: pointer;
+    @include border-radius(4px);
+    @include vendor(box-shadow, 0 2px 8px 0 rgba(darken($light, 30%), 0.4));
+    @include transition(300ms, curve());
+    &:hover {
+      background-color: #ccc;
+    }
+
+    img {
+      border: solid 1px #000;
+      pointer-events: none;
+      cursor: pointer;
+      width: 150px;
+      @include vendor(user-drag, none);
+      @include vendor(user-select, none);
+      @include transform(scale(1.15) rotateZ(180deg) rotateY(180deg));
+      opacity: 0;
+    }
+    &:hover {
+      @include vendor(box-shadow, 0 4px 16px 0 rgba(darken($light, 30%), 0.4));
+    }
+    &.flipped {
+      animation: flip-in-card 400ms curve() forwards;
+      img {
+        animation: flip-in-image 200ms curve() 200ms forwards;
+      }
+    }
+    &.closing {
+      animation: flip-out-card 400ms curve() forwards;
+      img {
+        animation: flip-out-image 200ms curve() 200ms forwards;
+      }
+    }
+  }
+}
+
+.winner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  @include flex(block, column, center, center);
+  width: 100%;
+  height: 100%;
+  background-color: rgba($light, 0.74);
+  color: $primary;
+  animation: winner 700ms forwards;
+  button {
+    border: none;
+    background-color: transparent;
+    color: $primary;
+    cursor: pointer;
+  }
+}

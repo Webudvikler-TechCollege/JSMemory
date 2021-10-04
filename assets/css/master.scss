@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap");
+
+$light: #fff;
+$primary: #484ba9;
+$danger: #CC575D;
+
+@import "helpers";
+@import "game";
+
+//// General styles:
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-kerning: auto;
+  -webkit-tap-highlight-color: transparent; 
+  outline: none;
+  
+}
+
+html {
+  font-family: 'Luckiest Guy';
+}
+
+body {
+  @include flex(block, column, center, center, null);
+  background: url("../images/moroccan-flower-dark.png");
+  color: $light;
+  margin: 0;
+}

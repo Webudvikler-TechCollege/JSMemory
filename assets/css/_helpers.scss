@@ -1,0 +1,77 @@
+//// Flexbox mixin:
+@mixin flex($display, $direction, $mainAxis, $crossAxis, $wrap: null) {
+  /// Display:
+  @if $display != null {
+    @if $display == inline {
+      display: inline-flex;
+    } @else {
+      display: flex;
+    }
+  }
+  /// Direction:
+  @if $direction != null {
+    flex-direction: $direction;
+  }
+  /// Main axis:
+  @if $mainAxis != null {
+    @if $mainAxis == start {
+      justify-content: flex-start;
+    } @else if $mainAxis == end {
+      justify-content: flex-end;
+    } @else {
+      justify-content: $mainAxis;
+    }
+  }
+  /// Cross axis:
+  @if $crossAxis != null {
+    @if $crossAxis == start {
+      align-items: flex-start;
+    } @else if $crossAxis == end {
+      align-items: flex-end;
+    } @else {
+      align-items: $crossAxis;
+    }
+  }
+  /// Wrap:
+  @if $wrap != null {
+    flex-wrap: $wrap;
+  }
+}
+
+//// Vendor mixin:
+@mixin vendor($prop, $val) {
+  #{$prop}: $val;
+  -ms-#{$prop}: $val;
+  -moz-#{$prop}: $val;
+  -webkit-#{$prop}: $val;
+}
+
+//// Easing curve function:
+@function curve($name: standard) {
+  $curve: cubic-bezier(0.4, 0.0, 0.2, 1);
+  @if $name == deceleration {
+    $curve: cubic-bezier(0.0, 0.0, 0.2, 1);
+  } @else if $name == acceleration {
+    $curve: cubic-bezier(0.4, 0.0, 1, 1);
+  } @else if $name == sharp {
+    $curve: cubic-bezier(0.4, 0.0, 0.6, 1);
+  } @else {
+    $curve: cubic-bezier(0.4, 0.0, 0.2, 1);
+  }
+  @return $curve;
+}
+
+//// Transition mixin:
+@mixin transition($duration, $easing) {
+  @include vendor(transition, $duration curve($easing));
+}
+
+//// Transform mixin:
+@mixin transform($val) {
+  @include vendor(transform, $val);
+}
+
+//// Border-radius mixin:
+@mixin border-radius($val) {
+  @include vendor(border-radius, $val);
+}
